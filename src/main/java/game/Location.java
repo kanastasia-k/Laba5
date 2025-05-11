@@ -75,7 +75,7 @@ public class Location {
     private void setEnemyPhoto(GameCharacter enemy) {
         try {
             // Формируем имя файла: lowercase без дефисов + .jpg
-            String imageName = enemy.getStringName().toLowerCase().replace("-", "") + ".jpg";
+            String imageName = enemy.getStringName().toLowerCase().replace("-", "").replace(" ", "") + ".jpg";
             // Путь внутри JAR-файла или ресурсов
             String resourcePath = "/images/" + imageName;
             URL imgURL = getClass().getResource(resourcePath);

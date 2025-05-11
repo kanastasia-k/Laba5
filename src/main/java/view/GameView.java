@@ -20,7 +20,7 @@ import javax.swing.*;
  *
  * @author Мария
  */
-public final class GameView extends JFrame {
+public class GameView extends JFrame {
     Controller controller;
     GameManager helper = new GameManager();
     Items[] items = new Items[3];
@@ -1243,6 +1243,16 @@ public final class GameView extends JFrame {
     }//GEN-LAST:event_startWithLocationsButtonActionPerformed
 
     private void chooseAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseAttributeButtonActionPerformed
+        if (!healthButton.isSelected() && !damageButton.isSelected()) {
+            JOptionPane.showMessageDialog(
+                levelUp, // родительское окно
+                "Пожалуйста, выберите что улучшить: здоровье или урон", // сообщение
+                "Ошибка выбора", // заголовок
+                JOptionPane.ERROR_MESSAGE // тип сообщения
+            );
+            return; // прерываем выполнение метода
+        }
+        
         if (healthButton.isSelected()) {
             helper.fight.addHealthToPlayer(helper.fight.getHuman());
         } else {
