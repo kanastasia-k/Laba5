@@ -20,20 +20,24 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Контроллер боевой механики, управляющий взаимодействием между игроком
- * и противником в рамках одного раунда
- * Основные функции:
- * Обработка действий игрока и противника
- * Отслеживание истории действий игрока
- * Проверка условий победы/поражения
- * Взаимодействие с Представлением через Контроллер
- * @author maria
+ * Класс, отвечающий за проведение боевых раундов
+ * Управляет логикой атак, защиты, дебаффов, использованием предметов, начислением опыта,
+ * повышением уровня и выбором действий противника
+ * @author kozhe
  */
 public class Fight {
     Controller controller;
     Player player;
     GameCharacter enemy;
+
+    /**
+     *
+     */
     public Location location = new Location();
+
+    /**
+     *
+     */
     public ArrayList<Action> actionsList = new ArrayList<>() {
         {
             add(new Hit());
@@ -87,7 +91,7 @@ public class Fight {
     }
 
     /**
-     *
+     * Выполняет ход игрока с выбранным действием
      * @param enemyAction
      * @param playerAction
      */
@@ -97,7 +101,7 @@ public class Fight {
     }
 
     /**
-     *
+     * Выполняет ход врага с выбранным действием
      * @param enemyAction
      * @param playerAction
      */
@@ -127,6 +131,13 @@ public class Fight {
 
     }
 
+    /**
+     * Выполняет боевое взаимодействие, включая выбор действия, реализацию урона, проверку состояния и обновление GUI
+     * @param playerActionIndex индекс действия игрока
+     * @param gameResults результаты игры
+     * @param locationsNumber номер текущей локации
+     * @param enemiesList список врагов
+     */
     public void hit(int playerActionIndex, ArrayList<Results> gameResults, int locationsNumber, GameCharacter[] enemiesList) {
         Action playerAction = createAction(ActionFactory.ActionType.values()[playerActionIndex]);
 
@@ -255,7 +266,7 @@ public class Fight {
     }
     
     /**
-     *
+     * Добавляет последнее действие игрока в историю
      * @param action
      */
     public void logPlayerAction(String action) {
@@ -272,10 +283,16 @@ public class Fight {
     public List<String> getPlayerActionHistory() {
         return new ArrayList<>(playerActionHistory);
     }
+
+    /**
+     *Выбирает действие врага на основе вероятностей и действий игрока
+     * @param enemy
+     * @param actions
+     * @param playerHistory
+     * @return
+     */
     public Action chooseEnemyAction(GameCharacter enemy, List<Action> actions, List<String> playerHistory) {
         Map<String, Double> actionWeights = new HashMap<>();
-
-        // Базовые вероятности для каждого типа врага
         switch (enemy.getName()) {
             case SUB_ZERO -> {
                 actionWeights.put("Hit", 0.4);
@@ -296,12 +313,15 @@ public class Fight {
             }
         }
 
-        // Адаптация на основе действий игрока
         adjustWeightsByPlayerActions(actionWeights, playerHistory);
 
         return selectWeightedAction(actions, actionWeights);
     }
-
+    /**
+     * Адаптирует вероятности выбора действия врагом в зависимости от частоты действий игрока.
+     * @param weights 
+     * @param playerHistory 
+     */
     private void adjustWeightsByPlayerActions(Map<String, Double> weights, List<String> playerHistory) {
         long playerHits = playerHistory.stream().filter(a -> a.equals("Hit")).count();
         long playerBlocks = playerHistory.stream().filter(a -> a.equals("Block")).count();
@@ -318,24 +338,29 @@ public class Fight {
 
         normalizeWeights(weights);
     }
-    
+    /**
+     * Нормализует веса вероятностей, чтобы сумма была равна 1.
+     * @param weights карта с весами
+     */
     private void normalizeWeights(Map<String, Double> weights) {
-        // Рассчитываем сумму всех весов
         double totalWeight = weights.values().stream()
             .mapToDouble(Double::doubleValue)
             .sum();
 
-        // Нормализуем веса, если сумма не нулевая
         if (totalWeight > 0) {
             weights.replaceAll((action, weight) -> weight / totalWeight);
         } 
-        // Дефолтные значения при нулевой сумме
         else {
             double defaultWeight = 1.0 / weights.size();
             weights.replaceAll((action, weight) -> defaultWeight);
         }
     }
-
+    /**
+     * Случайно выбирает действие на основе взвешенных вероятностей.
+     * @param actions
+     * @param weights
+     * @return выбранное действие
+     */
     private Action selectWeightedAction(List<Action> actions, Map<String, Double> weights) {
         double total = weights.values().stream().mapToDouble(Double::doubleValue).sum();
         double random = Math.random() * total;

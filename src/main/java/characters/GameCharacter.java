@@ -7,8 +7,15 @@ package characters;
 import java.net.URL;
 import javax.swing.ImageIcon;
 
+/**
+ * Абстрактный класс, представляющий игрового персонажа
+ * Содержит общие характеристики персонажа
+ */
 public abstract class GameCharacter {
 
+    /**
+     * Изображение персонажа
+     */
     public ImageIcon icon;
     
     private int level;
@@ -18,7 +25,13 @@ public abstract class GameCharacter {
     private int bonusDamageTurns = 0;
     private final CharacterFabric name;
 
-
+    /**
+     *
+     * @param level уровень персонажа
+     * @param health текущее и максимальное здороьве
+     * @param damage базовый урон
+     * @param name имя персонажа
+     */
     public GameCharacter(int level, int health, int damage, CharacterFabric name) {
         this.level = level;
         this.health = health;
@@ -27,30 +40,51 @@ public abstract class GameCharacter {
         this.name=name;
     }
 
+    /**
+     *
+     * @param turns количество ходов
+     */
     public void setBonusDamageTurns(int turns) {
         this.bonusDamageTurns = turns;
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public boolean hasBonusDamage() {
         return bonusDamageTurns > 0;
     }
 
+    /**
+     *
+     */
     public void loseBonusDamageTurn() {
         if (bonusDamageTurns > 0) {
             bonusDamageTurns--;
         }
     }
 
-
+    /**
+     *
+     * @return 
+     */
     public int getBonusDamageTurns() {
         return bonusDamageTurns;
     }
 
+    /**
+     *
+     * @param path путь к изображению
+     */
     public void setPhoto(String path) {
         icon = new ImageIcon(path);
     }
     
+    /**
+     *
+     * @param imageUrl
+     */
     public void setPhoto(URL imageUrl) {
         if (imageUrl != null) {
             this.icon = new ImageIcon(imageUrl);
@@ -59,62 +93,121 @@ public abstract class GameCharacter {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public ImageIcon getPhoto() {
         return icon;
     }
 
+    /**
+     *
+     * @param level
+     */
     public void setLevel(int level) {
         this.level = level;
     }
 
+    /**
+     *
+     */
     public void addLevel() {
         this.level++;
     }
 
+    /**
+     *
+     * @param health
+     */
     public void addHealth(int health) {
         this.health += health;
     }
 
+    /**
+     *
+     * @param health
+     */
     public void setHealth(int health) {
         this.health = health;
     }
 
+    /**
+     *
+     * @param damage
+     */
     public void setDamage(int damage) {
         this.damage = damage;
     }
 
+    /**
+     *
+     * @param damage
+     */
     public void addDamage(int damage) {
         this.damage += damage;
     }
 
+    /**
+     *
+     * @param maxHealth
+     */
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
     }
 
+    /**
+     *
+     * @param maxHealth
+     */
     public void addMaxHealth(int maxHealth) {
         this.maxHealth += maxHealth;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLevel() {
         return this.level;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getHealth() {
         return this.health;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getDamage() {
         return this.damage;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getMaxHealth() {
         return this.maxHealth;
     }
 
+    /**
+     *
+     * @return
+     */
     public CharacterFabric getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStringName(){
        return name.getString();
     }

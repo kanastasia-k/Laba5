@@ -6,6 +6,10 @@ package characters;
 
 import components.Items;
 
+/**
+ * Класс, представляющий игрового персонажа, управляемого игроком
+ * Наследуется от {@link GameCharacter} и добавляет свойства, связанные с прогрессом игрока
+ */
 public class Player extends GameCharacter {
 
     private int points;
@@ -13,6 +17,13 @@ public class Player extends GameCharacter {
     private int nextExperience;
     private Items[] items;
 
+    /**
+     *
+     * @param level уровень игрока
+     * @param health здоровье игрока
+     * @param damage базовый урон
+     * @param name имя игрока
+     */
     public Player(int level, int health, int damage, CharacterFabric name) {
         super(level, health, damage, name);
         this.points = 0;
@@ -20,42 +31,80 @@ public class Player extends GameCharacter {
         this.nextExperience = 40;
     }
 
+    /**
+     * Инвентарь игрока
+     * @param items массив предметов {@link Items}, принадлежащих игроку
+     */
     public void setItems(Items[] items){
         this.items = items;
     }
 
+    /**
+     *
+     * @return
+     */
     public Items[] getItems(){
         return this.items;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPoints() {
         return this.points;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getExperience() {
         return this.experience;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNextExperience() {
         return this.nextExperience;
     }
 
+    /**
+     *
+     */
     public void resetPoints() {
         this.points = 0;
     }
     
+    /**
+     *
+     * @param points
+     */
     public void setPoints(int points) {
         this.points += points;
     }
 
+    /**
+     *
+     */
     public void resetExperience() {
         this.experience = 0;
     }
 
+    /**
+     *
+     * @param experience
+     */
     public void setExperience(int experience) {
         this.experience += experience;
     }
 
+    /**
+     *
+     * @param nextExperience
+     */
     public void setNextExperience(int nextExperience) {
         this.nextExperience = nextExperience;
     }

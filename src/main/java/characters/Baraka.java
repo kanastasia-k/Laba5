@@ -5,10 +5,19 @@
 package characters;
 
 /**
- *
+ * Класс, представляющий игрового персонажа Baraka 
+ * Наследует базовые характеристики от класса GameCharacter и задает уникальные параметры персонажа
  * @author kozhe
  */
 public class Baraka extends GameCharacter {
+    /**
+     * Конструктор класса Baraka.
+     * Инициализирует персонажа со стандартными характеристиками:
+     * - Уровень: 1
+     * - Максимальное здоровье: 100
+     * - Базовый урон: 12
+     * - Тип персонажа: CharacterFabric.BARAKA
+     */
     public Baraka() {
         super(1, 100, 12, CharacterFabric.BARAKA);
     }

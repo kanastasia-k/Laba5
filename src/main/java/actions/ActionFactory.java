@@ -5,17 +5,44 @@
 package actions;
 
 /**
- *
- * @author kozhe
+ * Фабрика для создания объектов действий в игре
+ * Позволяет создавать конкретные реализации по типам действий
  */
 public class ActionFactory {
+
+    /**
+     * Перечисление возможных типов действий 
+     */
     public enum ActionType {
+
+        /**
+         * Тип: атака
+         */
         HIT,
+
+        /**
+         * Тип: защита
+         */
         DEFENSE,
+
+        /**
+         * Тип: ослабление противника
+         */
         DEBUFF,
+
+        /**
+         * Тип: восстановление здоровья
+         */
         HEAL
     }
     
+    /**
+     * Создает и возвращает конкретную реализацию действия по указанному типу
+     * 
+     * @param type тип создаваемого действия
+     * @return экземпляр класса, реализующего действие
+     * @throws IllegalArgumentException если передан неизвестный тип действия
+     */
     public static Action createAction(ActionType type) {
         return switch (type) {
             case HIT -> new Hit(); 

@@ -33,21 +33,9 @@ import java.util.logging.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /**
- * Вспомогательный класс для управления основными игровыми процессами
- * Обеспечивает взаимодействие между игровой логикой, данными и графическим интерфейсом
- * 
- * Основные функции:
- * Инициализация и управление списком противников
- * Работа с таблицей рекордов
- * Создание нового игрока
- * Обработка завершения игры
- * Взаимодействие с Excel для сохранения результатов
- * 
- * @see Fight
- * @see Results
- * @see Controller
- * 
- * @author maria
+ * Класс, управляющий основной логикой игры, включая создание персонажей,
+ * обработку игровых сессий, управление результатами игроков и взаимодействие с Excel
+ * @author kozhe
  */
 public class GameManager {
     /**
@@ -55,11 +43,11 @@ public class GameManager {
      */
     public Fight fight = new Fight();
     /**
-     * Список для хранения результатов игровых сессий
+     * Хранение рузльтатов 
      */
     private final ArrayList<Results> gameResults = new ArrayList<>();
     /**
-     * Массив противников, доступных в игре
+     * Доступные противники
      */
     private final GameCharacter[] enemies = new GameCharacter[5];
     
@@ -86,9 +74,9 @@ public class GameManager {
     }
 
     /**
-     * Создает нового игрока с начальными параметрами
+     * Создает нового игрока
      * 
-     * @param controller экземпляр посредника для представления
+     * @param controller экземпляр {@code Controller}, управляющий интерфейсом
      * @param items начальный инвентарь игрока
      * @return новый экземпляр игрока
      */
@@ -101,11 +89,11 @@ public class GameManager {
     }
 
     /**
-     * Обрабатывает завершение игры и обновляет таблицу рекордов
+     * Завершает игровую сессию, сохраняет результат в Excel
      * 
      * @param player текущий игрок
-     * @param text поле ввода имени игрока
-     * @param table таблица для отображения результатов
+     * @param text текстовое поле с именем игрока
+     * @param table таблица результатов
      * @throws IOException при ошибках записи в файл
      */
     public void endGameTop(Player player, JTextField text, JTable table) throws IOException {
@@ -116,7 +104,7 @@ public class GameManager {
     }
 
     /**
-     * Записывает результаты в Excel-файл
+     * Записывает Топ-10 результатов в Excel-файл
      * 
      * @throws IOException при ошибках ввода/вывода
      * @see <a href="https://poi.apache.org/">Apache POI documentation</a>
@@ -145,7 +133,7 @@ public class GameManager {
     }
 
     /**
-     * Возвращает список игровых результатов
+     * Возвращает список всех игровых результатов
      * 
      * @return неизменяемый список объектов Results
      */
@@ -159,10 +147,8 @@ public class GameManager {
      * @throws IOException при ошибках чтения файла
      */
     public void readFromExcel() throws IOException {
-         // Путь к файлу во внешней директории
         File externalFile = new File("Results.xlsx");
 
-        // Если файл существует вне JAR - читаем его
         if (externalFile.exists()) {
             try (XSSFWorkbook book = new XSSFWorkbook(externalFile)) {
                 readDataFromWorkbook(book);
@@ -174,12 +160,10 @@ public class GameManager {
             );
             }
         } 
-        // Если нет - копируем из ресурсов и читаем
         else {
             try (InputStream is = getClass().getResourceAsStream("/Results.xlsx");
                  XSSFWorkbook book = new XSSFWorkbook(is)) {
 
-                // Копируем файл из ресурсов в рабочую директорию
                 try (FileOutputStream out = new FileOutputStream(externalFile)) {
                     book.write(out);
                 }
@@ -195,7 +179,11 @@ public class GameManager {
         }
         }
     }
-    
+    /**
+     * Считывает данные из книги Excel и добавляет их в список результатов.
+     *
+     * @param book объект, содержащий данные
+     */
     private void readDataFromWorkbook(XSSFWorkbook book) {
     XSSFSheet sh = book.getSheetAt(0);
     for (int i = 1; i <= sh.getLastRowNum(); i++) {
@@ -211,7 +199,7 @@ public class GameManager {
     /**
      * Обновляет таблицу результатов в графическом интерфейсе
      * 
-     * @param table целевая JTable для отображения данных
+     * @param table JTable для отображения данных
      */
     public void writeToTable(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();

@@ -5,10 +5,19 @@
 package characters;
 
 /**
- *
+ * Класс, представляющий игрового персонажа LiuKang 
+ * Наследует базовые характеристики от класса GameCharacter и задает уникальные параметры персонажа
  * @author kozhe
  */
 public class LiuKang extends GameCharacter {
+    /**
+     * Конструктор класса LiuKang.
+     * Инициализирует персонажа со стандартными характеристиками:
+     * - Уровень: 1
+     * - Максимальное здоровье: 100
+     * - Базовый урон: 12
+     * - Тип персонажа: CharacterFabric.LIU_KANG
+     */
     public LiuKang() {
         super(1, 70, 20, CharacterFabric.LIU_KANG);
     }

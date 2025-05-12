@@ -5,10 +5,19 @@
 package characters;
 
 /**
- *
+ * Класс, представляющий игрового персонажа "Вы"
+ * Наследует базовые характеристики от класса GameCharacter и задает уникальные параметры персонажа
  * @author kozhe
  */
 public class Human extends GameCharacter {
+    /**
+     * Конструктор класса Human.
+     * Инициализирует персонажа со стандартными характеристиками:
+     * - Уровень: 1
+     * - Максимальное здоровье: 100
+     * - Базовый урон: 12
+     * - Тип персонажа: CharacterFabric.Human
+     */
     public Human(){
         super(0, 80, 16, CharacterFabric.Human);
     }

@@ -15,10 +15,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-
 /**
- *
- * @author Мария
+ * Главное окно приложения
+ * Содержит компоненты графического интерфейса
+ * @author kozhe
  */
 public class GameView extends JFrame {
     Controller controller;
@@ -27,6 +27,9 @@ public class GameView extends JFrame {
     String nameButton = "";
     int locationsNumber = 0;
 
+    /**
+     * Инициализирует компоненты интерфейса и логику игры
+     */
     public GameView() {
         initComponents();
         try {
@@ -52,6 +55,9 @@ public class GameView extends JFrame {
         helper.fight.setController(controller);
     }
     
+    /**
+     *
+     */
     public void setControllerComponents() {
         controller.setEnemyHealthLabel(this.enemyHealthLabel);
         controller.setPlayerHealthLabel(this.playerHealthLabel);
@@ -79,6 +85,10 @@ public class GameView extends JFrame {
         controller.setCantUseItemDialog(this.cantUseItemDialog);
     }
     
+    /**
+     *
+     * @return
+     */
     public JPanel getFightPanel() {
         return fightPanel;
     }
@@ -1263,6 +1273,11 @@ public class GameView extends JFrame {
         setPanelEnabled(fightPanel,true);
     }//GEN-LAST:event_chooseAttributeButtonActionPerformed
 
+    /**
+     *
+     * @param panel
+     * @param isEnabled
+     */
     public void setPanelEnabled(JPanel panel, Boolean isEnabled) {
         if(levelUp.isVisible()) return;
         panel.setEnabled(isEnabled);

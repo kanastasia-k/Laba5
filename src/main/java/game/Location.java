@@ -10,20 +10,20 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- *
- * @author maria
- */
-/**
- * Класс для управления игровыми локациями и противниками
- * 
- * Основные функции:
- * Генерация случайных противников для локации
- * Управление прогрессом прохождения локаций
- * Сброс состояния локаций
- * 
+ * Класс, который управляет текущей локацией игрока и врагами, встречающимися в ней
+ * Отвечает за генерацию врагов, переключение между локациями.
+ * @author kozhe
  */
 public class Location {
+
+    /**
+     * Максимальное количество уникальных типов врагов
+     */
     public static final int MAX_ENEMIES = 4;
+
+    /**
+     * Индекс врага по умолчанию (используется, когда враги на локации закончились)
+     */
     public static final int DEFAULT_ENEMY_INDEX = 4;
     
     private int currentLocation = 1;
@@ -41,15 +41,15 @@ public class Location {
     }
 
     /**
-     *
-     * @return
+     * Возвращает список врагов, сгенерированных для текущей локации
+     * @return 
      */
     public ArrayList<GameCharacter> getCurrentEnemies() {
         return currentEnemiesList;
     }
 
     /**
-     *
+     * Генерирует список случайных врагов для текущей локации
      * @param maxEnemies
      */
     public void setCurrentEnemies(int maxEnemies) {
@@ -62,7 +62,7 @@ public class Location {
     }   
 
     /**
-     * Генерирует рандомного противника
+     * Генерирует случайного врага из полного списка
      * @return экземпляр GameCharacter с настроенными параметрами
      */
     private GameCharacter getRandomEnemy() {
@@ -74,9 +74,7 @@ public class Location {
 
     private void setEnemyPhoto(GameCharacter enemy) {
         try {
-            // Формируем имя файла: lowercase без дефисов + .jpg
             String imageName = enemy.getStringName().toLowerCase().replace("-", "").replace(" ", "") + ".jpg";
-            // Путь внутри JAR-файла или ресурсов
             String resourcePath = "/images/" + imageName;
             URL imgURL = getClass().getResource(resourcePath);
             
@@ -92,7 +90,7 @@ public class Location {
 
     /**
      *
-     * @param isNextLocation
+     * @param isNextLocation true, если переход к следующей локации, false - сброс
      * @param maxEnemies
      */
     public void resetLocation(boolean isNextLocation, int maxEnemies) {
@@ -125,8 +123,9 @@ public class Location {
 
      /**
      * Возвращает следующего противника для текущей локации.
+     * Если все враги побеждены — возвращает врага по умолчанию
      * 
-     * @return экземпляр GameCharacter с настроенными параметрами
+     * @return экземпляр GameCharacter, представляющий врага
      * @see EnemyFabric
      */
     public GameCharacter getCurrentEnemy() {
