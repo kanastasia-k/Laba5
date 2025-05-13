@@ -16,9 +16,9 @@ public class SonyaBlade extends GameCharacter {
      * - Уровень: 1
      * - Максимальное здоровье: 100
      * - Базовый урон: 12
-     * - Тип персонажа: CharacterFabric.SONYA_BLADE
+     * - Тип персонажа: "Sonya Blade"
      */
     public SonyaBlade() {
-        super(1, 80, 16, CharacterFabric.SONYA_BLADE);
+        super(1, 80, 16, "Sonya Blade");
     }
 }

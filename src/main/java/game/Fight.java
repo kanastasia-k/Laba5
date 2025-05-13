@@ -4,12 +4,11 @@
  */
 package game;
 
+import actionFactory.ActionFactory;
 import characters.Player;
 import characters.GameCharacter;
 import components.Results;
 import actions.*;
-import static actions.ActionFactory.createAction;
-import static characters.CharacterFabric.SHAO_KAHN;
 import components.Items;
 
 import java.util.ArrayList;
@@ -133,13 +132,13 @@ public class Fight {
 
     /**
      * Выполняет боевое взаимодействие, включая выбор действия, реализацию урона, проверку состояния и обновление GUI
-     * @param playerActionIndex индекс действия игрока
+     * @param actionFactory
      * @param gameResults результаты игры
      * @param locationsNumber номер текущей локации
      * @param enemiesList список врагов
      */
-    public void hit(int playerActionIndex, ArrayList<Results> gameResults, int locationsNumber, GameCharacter[] enemiesList) {
-        Action playerAction = createAction(ActionFactory.ActionType.values()[playerActionIndex]);
+    public void hit(ActionFactory actionFactory, ArrayList<Results> gameResults, int locationsNumber, GameCharacter[] enemiesList) {
+        Action playerAction = actionFactory.createAction();
 
         Action enemyAction = chooseEnemyAction(enemy, new ArrayList<>(actionsList), getPlayerActionHistory());
         // Логируем действие игрока
@@ -176,7 +175,7 @@ public class Fight {
             controller.revive(player, player.getItems());
         }
         if (player.getHealth() <= 0 | enemy.getHealth() <= 0) {
-            if (location.getCurrentLocation() == locationsNumber & SHAO_KAHN.equals(enemy.getName())) {
+            if (location.getCurrentLocation() == locationsNumber & "Shao Kahn".equals(enemy.getName())) {
                 location.resetLocation(false, 1);
                 endFinalRound(gameResults, enemiesList);
             } else {
@@ -193,7 +192,7 @@ public class Fight {
         controller.makeEndFightDialogVisible();
         if (player.getHealth() > 0) {
             controller.setRoundEndText("You win");
-            if (enemy.getName().equals(SHAO_KAHN)) {
+            if (enemy.getName().equals("Shao Kahn")) {
                 addItems(38, 23, 8, player.getItems());
                 addPointsBoss(player);
                 location.resetLocation(true, player.getLevel());
@@ -203,7 +202,7 @@ public class Fight {
             }
         } else {
             reset(enemiesList);
-            controller.setRoundEndText(enemy.getStringName() + " win");
+            controller.setRoundEndText(enemy.getName() + " win");
         }
     }
 
@@ -294,16 +293,16 @@ public class Fight {
     public Action chooseEnemyAction(GameCharacter enemy, List<Action> actions, List<String> playerHistory) {
         Map<String, Double> actionWeights = new HashMap<>();
         switch (enemy.getName()) {
-            case SUB_ZERO -> {
+            case "Sub Zero" -> {
                 actionWeights.put("Hit", 0.4);
                 actionWeights.put("Block", 0.3);
                 actionWeights.put("Debuff", 0.3);
             }
-            case SHAO_KAHN -> {
+            case "Shao Kahn" -> {
                 actionWeights.put("Hit", 0.6);
                 actionWeights.put("Block", 0.4);
             }
-            case LIU_KANG -> {
+            case "Liu Kang" -> {
                 actionWeights.put("Hit", 0.5);
                 actionWeights.put("Counter", 0.5);
             }
@@ -503,23 +502,23 @@ public class Fight {
         for (GameCharacter enemy : enemiesList) {
             enemy.setLevel(1);
             switch (enemy.getName()) {
-                case SUB_ZERO -> {
+                case "Sub Zero" -> {
                     enemy.setDamage(16);
                     enemy.setMaxHealth(60);
                 }
-                case SONYA_BLADE -> {
+                case "Sonya Blade" -> {
                     enemy.setDamage(16);
                     enemy.setMaxHealth(80);
                 }
-                case SHAO_KAHN -> {
+                case "Shao Kahn" -> {
                     enemy.setDamage(30);
                     enemy.setMaxHealth(100);
                 }
-                case LIU_KANG -> {
+                case "Liu Kang" -> {
                     enemy.setDamage(20);
                     enemy.setMaxHealth(70);
                 }
-                case BARAKA -> {
+                case "Baraka" -> {
                     enemy.setDamage(12);
                     enemy.setMaxHealth(100);
                 }

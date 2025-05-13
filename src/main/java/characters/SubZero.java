@@ -16,9 +16,9 @@ public class SubZero extends GameCharacter {
      * - Уровень: 1
      * - Максимальное здоровье: 100
      * - Базовый урон: 12
-     * - Тип персонажа: CharacterFabric.SUB_ZERO
+     * - Тип персонажа: "Sub Zero"
      */
     public SubZero() {
-        super(1, 60, 16, CharacterFabric.SUB_ZERO);
+        super(1, 60, 16, "Sub Zero");
     }
 }

@@ -19,12 +19,14 @@ public class Hit extends Action {
     private static final double DEBUFF_BLOCK_DAMAGE_MULTIPLIER = 1.15;
     /** Множитель урона по лечащемуся противнику */
     private static final double HEAL_DAMAGE_MULTIPLIER = 2.0;
+    
 
     /**
      * Возвращает тип действия.
      * 
      * @return строку "Hit" - тип данного действия
      */
+
     @Override
     public String getType() {
         return "Hit";

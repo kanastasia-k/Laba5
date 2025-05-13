@@ -16,9 +16,9 @@ public class ShaoKahn extends GameCharacter {
      * - Уровень: 1
      * - Максимальное здоровье: 100
      * - Базовый урон: 12
-     * - Тип персонажа: CharacterFabric.SHAO_KAHN
+     * - Тип персонажа: "Shao Kahn"
      */
     public ShaoKahn() {
-        super(3, 100, 30, CharacterFabric.SHAO_KAHN);
+        super(3, 100, 30, "Shao Kahn");
     }
 }

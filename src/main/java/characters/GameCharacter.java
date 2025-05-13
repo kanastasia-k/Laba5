@@ -23,7 +23,7 @@ public abstract class GameCharacter {
     private int maxHealth;
     private int damage;
     private int bonusDamageTurns = 0;
-    private final CharacterFabric name;
+    private final String name;
 
     /**
      *
@@ -32,7 +32,7 @@ public abstract class GameCharacter {
      * @param damage базовый урон
      * @param name имя персонажа
      */
-    public GameCharacter(int level, int health, int damage, CharacterFabric name) {
+    public GameCharacter(int level, int health, int damage, String name) {
         this.level = level;
         this.health = health;
         this.damage = damage;
@@ -200,7 +200,7 @@ public abstract class GameCharacter {
      *
      * @return
      */
-    public CharacterFabric getName() {
+    public String getName() {
         return name;
     }
 
@@ -208,8 +208,8 @@ public abstract class GameCharacter {
      *
      * @return
      */
-    public String getStringName(){
-       return name.getString();
-    }
+//    public String getStringName(){
+//       return name;
+//    }
 }
 

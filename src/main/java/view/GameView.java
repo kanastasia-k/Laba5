@@ -4,6 +4,7 @@
  */
 package view;
 
+import actionFactory.*;
 import game.GameManager;
 import game.Controller;
 import characters.Player;
@@ -1109,11 +1110,13 @@ public class GameView extends JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void attackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attackButtonActionPerformed
-        helper.fight.hit(0, helper.getResults(), locationsNumber, helper.getEnemies());
+        ActionFactory hitFactory = new HitFactory();
+        helper.fight.hit(hitFactory, helper.getResults(), locationsNumber, helper.getEnemies());
     }//GEN-LAST:event_attackButtonActionPerformed
 
     private void defenseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defenseButtonActionPerformed
-        helper.fight.hit(1, helper.getResults(), locationsNumber, helper.getEnemies());
+        ActionFactory defenseFactory = new DefenseFactory();
+        helper.fight.hit(defenseFactory, helper.getResults(), locationsNumber, helper.getEnemies());
     }//GEN-LAST:event_defenseButtonActionPerformed
 
     
@@ -1135,7 +1138,7 @@ public class GameView extends JFrame {
         enemyIconLabel.setIcon(helper.fight.getEnemy().getPhoto());
         enemyDamageValueLabel.setText(Integer.toString(helper.fight.getEnemy().getDamage()));
         enemyHealthLabel.setText(Integer.toString(helper.fight.getEnemy().getHealth()) + "/" + Integer.toString(helper.fight.getEnemy().getMaxHealth()));
-        enemyHeroLabel.setText(helper.fight.getEnemy().getStringName());
+        enemyHeroLabel.setText(helper.fight.getEnemy().getName());
         controller.setHealthBar(helper.fight.getEnemy());
         enemyHealthBar.setMaximum(helper.fight.getEnemy().getMaxHealth());
         helper.fight.newRound();
@@ -1208,7 +1211,8 @@ public class GameView extends JFrame {
     }//GEN-LAST:event_closeCantUseItemButtonActionPerformed
 
     private void debuffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_debuffButtonActionPerformed
-        helper.fight.hit(2, helper.getResults(), locationsNumber, helper.getEnemies());
+        ActionFactory debuffFactory = new DebuffFactory();
+        helper.fight.hit(debuffFactory, helper.getResults(), locationsNumber, helper.getEnemies());
     }//GEN-LAST:event_debuffButtonActionPerformed
 
     private void healthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_healthButtonActionPerformed
@@ -1241,7 +1245,7 @@ public class GameView extends JFrame {
         enemyIconLabel.setIcon(helper.fight.getEnemy().getPhoto());
         enemyDamageValueLabel.setText(Integer.toString(helper.fight.getEnemy().getDamage()));
         enemyHealthLabel.setText(helper.fight.getEnemy().getHealth() + "/" + Integer.toString(helper.fight.getEnemy().getMaxHealth()));
-        enemyHeroLabel.setText(helper.fight.getEnemy().getStringName());
+        enemyHeroLabel.setText(helper.fight.getEnemy().getName());
         controller.setHealthBar(helper.fight.getEnemy());
         enemyHealthBar.setMaximum(helper.fight.getEnemy().getMaxHealth());
 
@@ -1255,12 +1259,12 @@ public class GameView extends JFrame {
     private void chooseAttributeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseAttributeButtonActionPerformed
         if (!healthButton.isSelected() && !damageButton.isSelected()) {
             JOptionPane.showMessageDialog(
-                levelUp, // родительское окно
-                "Пожалуйста, выберите что улучшить: здоровье или урон", // сообщение
-                "Ошибка выбора", // заголовок
-                JOptionPane.ERROR_MESSAGE // тип сообщения
+                levelUp, 
+                "Пожалуйста, выберите что улучшить: здоровье или урон", 
+                "Ошибка выбора", 
+                JOptionPane.ERROR_MESSAGE 
             );
-            return; // прерываем выполнение метода
+            return;
         }
         
         if (healthButton.isSelected()) {

@@ -10,7 +10,6 @@ import characters.GameCharacter;
 import actions.Action;
 import view.GameView;
 import javax.swing.*;
-import static characters.CharacterFabric.Human;
 
 /**
  * Класс, управляющий отображением информации и взаимодействием с элементами интерфейса в боевой сцене игры
@@ -59,8 +58,8 @@ public class Controller {
      * @param enemyAction действие врага
      */
     public void setActionLabels(GameCharacter enemy, GameCharacter human, Action playerAction, Action enemyAction) {
-        updateLabel(playerActionLabel, human.getStringName(), "uses", playerAction.getType());
-        updateLabel(enemyActionLabel, enemy.getStringName(), "use", enemyAction.getType());
+        updateLabel(playerActionLabel, human.getName(), "uses", playerAction.getType());
+        updateLabel(enemyActionLabel, enemy.getName(), "use", enemyAction.getType());
     }
 
     /**
@@ -78,7 +77,7 @@ public class Controller {
     }
 
     private void updateDebuffLabel(GameCharacter gameCharacter, String debuffText) {
-        if (gameCharacter.getName().equals(Human)) {
+        if (gameCharacter.getName().equals("Human")) {
             playerDebuffLabel.setText(debuffText);
         } else {
             enemyDebuffLabel.setText(debuffText);
@@ -90,7 +89,7 @@ public class Controller {
      * @param gameCharacter
      */
     public void setHealthBar(GameCharacter gameCharacter) {
-        JProgressBar healthBar = gameCharacter.getName().equals(Human) ? playerHealthBar : enemyHealthBar;
+        JProgressBar healthBar = gameCharacter.getName().equals("Human") ? playerHealthBar : enemyHealthBar;
         healthBar.setValue(Math.max(gameCharacter.getHealth(), 0));
     }
 

@@ -11,13 +11,13 @@ import characters.GameCharacter;
  * 
  */
 public class Defense extends Action {
-
     
 /**
  * Возвращает тип действия
  * 
  * @return строку "Defense" - тип данного действия
  */      
+
     @Override
     public String getType() {
         return "Defense";

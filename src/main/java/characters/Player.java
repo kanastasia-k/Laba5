@@ -24,7 +24,7 @@ public class Player extends GameCharacter {
      * @param damage базовый урон
      * @param name имя игрока
      */
-    public Player(int level, int health, int damage, CharacterFabric name) {
+    public Player(int level, int health, int damage, String name) {
         super(level, health, damage, name);
         this.points = 0;
         this.experience = 0;

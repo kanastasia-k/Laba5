@@ -10,12 +10,14 @@ import characters.GameCharacter;
  * Класс,реализующий действие Ослабление противника
  */
 public class Debuff extends Action {
-  
+
+    
 /**
  * Возвращает тип действия
  * 
  * @return строку "Debuff" - тип данного действия
  */   
+    
     @Override
     public String getType() {
         return "Debuff";

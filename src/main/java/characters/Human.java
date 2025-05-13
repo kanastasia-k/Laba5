@@ -16,9 +16,9 @@ public class Human extends GameCharacter {
      * - Уровень: 1
      * - Максимальное здоровье: 100
      * - Базовый урон: 12
-     * - Тип персонажа: CharacterFabric.Human
+     * - Тип персонажа: "Human"
      */
     public Human(){
-        super(0, 80, 16, CharacterFabric.Human);
+        super(0, 80, 16, "Human");
     }
 }

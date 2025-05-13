@@ -16,9 +16,9 @@ public class LiuKang extends GameCharacter {
      * - Уровень: 1
      * - Максимальное здоровье: 100
      * - Базовый урон: 12
-     * - Тип персонажа: CharacterFabric.LIU_KANG
+     * - Тип персонажа: "Liu Kang"
      */
     public LiuKang() {
-        super(1, 70, 20, CharacterFabric.LIU_KANG);
+        super(1, 70, 20, "Liu Kang");
     }
 }

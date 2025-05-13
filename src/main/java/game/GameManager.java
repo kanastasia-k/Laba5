@@ -9,8 +9,7 @@ package game;
  * @author kozhe
  */
 
-import characters.CharacterFabric;
-import static characters.CharacterFabric.Human;
+import characterFactory.*;
 import characters.Player;
 import components.Items;
 import characters.GameCharacter;
@@ -58,11 +57,12 @@ public class GameManager {
      * Инициализирует список противников, создавая экземпляры персонажей
      */
     public void setEnemies() {
-        enemies[0] = CharacterFabric.BARAKA.createCharacter();
-        enemies[1] = CharacterFabric.SUB_ZERO.createCharacter();
-        enemies[2] = CharacterFabric.LIU_KANG.createCharacter();
-        enemies[3] = CharacterFabric.SONYA_BLADE.createCharacter();
-        enemies[4] = CharacterFabric.SHAO_KAHN.createCharacter();
+        CharacterRegistration.registerAll();
+        enemies[0] = CharacterFactory.createCharacter("Baraka");
+        enemies[1] = CharacterFactory.createCharacter("Sub Zero");
+        enemies[2] = CharacterFactory.createCharacter("Liu Kang");
+        enemies[3] = CharacterFactory.createCharacter("Sonya Blade");
+        enemies[4] = CharacterFactory.createCharacter("Shao Kahn");
     }
 
     /**
@@ -81,7 +81,7 @@ public class GameManager {
      * @return новый экземпляр игрока
      */
     public Player newHuman(Controller controller, Items[] items) {
-        Player player = new Player(0, 80, 16, Human);
+        Player player = new Player(0, 80, 16, "Human");
         controller.setHealthBar(player);
         controller.setPlayerMaxHealthBar(player);
         player.setItems(items);

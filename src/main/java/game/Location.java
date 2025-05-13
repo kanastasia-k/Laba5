@@ -74,7 +74,7 @@ public class Location {
 
     private void setEnemyPhoto(GameCharacter enemy) {
         try {
-            String imageName = enemy.getStringName().toLowerCase().replace("-", "").replace(" ", "") + ".jpg";
+            String imageName = enemy.getName().toLowerCase().replace("-", "").replace(" ", "") + ".jpg";
             String resourcePath = "/images/" + imageName;
             URL imgURL = getClass().getResource(resourcePath);
             

@@ -16,9 +16,9 @@ public class Baraka extends GameCharacter {
      * - Уровень: 1
      * - Максимальное здоровье: 100
      * - Базовый урон: 12
-     * - Тип персонажа: CharacterFabric.BARAKA
+     * - Тип персонажа: "Baraka"
      */
     public Baraka() {
-        super(1, 100, 12, CharacterFabric.BARAKA);
+        super(1, 100, 12, "Baraka");
     }
 }
