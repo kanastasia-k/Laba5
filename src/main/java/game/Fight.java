@@ -386,7 +386,7 @@ public class Fight {
     /**
      *
      * @param player
-     * @return
+     * 
      */
     public boolean checkExperience(Player player) {
         return player.getExperience() >= player.getNextExperience();

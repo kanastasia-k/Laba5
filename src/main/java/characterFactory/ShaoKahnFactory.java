@@ -17,7 +17,7 @@ public class ShaoKahnFactory extends CharacterFactory{
     }
     /**
      *
-     * @return
+     * @return объект типа GameCharacter, соответствующий персонажу ShaoKahn
      */
         public GameCharacter createCharacter(){
         return new ShaoKahn();

@@ -41,7 +41,7 @@ public class Player extends GameCharacter {
 
     /**
      *
-     * @return
+     * @return предметы
      */
     public Items[] getItems(){
         return this.items;
@@ -49,7 +49,7 @@ public class Player extends GameCharacter {
 
     /**
      *
-     * @return
+     * @return баллы
      */
     public int getPoints() {
         return this.points;
@@ -57,7 +57,7 @@ public class Player extends GameCharacter {
 
     /**
      *
-     * @return
+     * @return опыт
      */
     public int getExperience() {
         return this.experience;
@@ -65,7 +65,7 @@ public class Player extends GameCharacter {
 
     /**
      *
-     * @return
+     * @return новый опыт
      */
     public int getNextExperience() {
         return this.nextExperience;

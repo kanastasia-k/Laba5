@@ -14,7 +14,7 @@ public class HealFactory extends ActionFactory{
 
     /**
      *
-     * @return
+     * @return объект типа Action, соответствующий действию Heal
      */
     @Override
     public Action createAction() {

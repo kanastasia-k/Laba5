@@ -11,7 +11,7 @@ import javax.swing.*;
 import view.GameView;
 
 /**
- *
+ * Главный класс приложения, который запускает графический интерфейс игры
  * @author kozhe
  */
 public class Main {

@@ -24,7 +24,7 @@ public class Results {
 
     /**
      *
-     * @return
+     * @return имя
      */
     public String getName(){
         return this.name;
@@ -32,7 +32,7 @@ public class Results {
 
     /**
      *
-     * @return
+     * @return баллы
      */
     public int getPoints(){
         return this.points;

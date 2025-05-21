@@ -13,7 +13,7 @@ import characters.*;
 public class BarakaFactory extends CharacterFactory{
     /**
      *
-     * @return
+     * @return объект типа GameCharacter, соответствующий персонажу Baraka
      */
     public GameCharacter createCharacter(){
         return new Baraka();

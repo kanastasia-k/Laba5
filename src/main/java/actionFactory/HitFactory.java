@@ -14,7 +14,7 @@ public class HitFactory extends ActionFactory{
 
     /**
      *
-     * @return
+     * @return объект типа Action, соответствующий действию Hit
      */
     @Override
     public Action createAction() {

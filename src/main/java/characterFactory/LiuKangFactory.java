@@ -18,7 +18,7 @@ public class LiuKangFactory extends CharacterFactory{
     }
     /**
      *
-     * @return
+     * @return объект типа GameCharacter, соответствующий персонажу LiuKang
      */
         public GameCharacter createCharacter(){
         return new LiuKang();

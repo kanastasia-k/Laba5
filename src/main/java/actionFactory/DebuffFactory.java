@@ -14,7 +14,7 @@ public class DebuffFactory extends ActionFactory{
 
     /**
      *
-     * @return
+     * @return объект типа Action, соответствующий действию Debuff
      */
     @Override
     public Action createAction() {

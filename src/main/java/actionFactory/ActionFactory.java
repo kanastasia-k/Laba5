@@ -14,7 +14,7 @@ public abstract class ActionFactory {
 
     /**
      *
-     * @return
+     * @return объект типа Action, соответствующий действию
      */
     public abstract Action createAction();
 }

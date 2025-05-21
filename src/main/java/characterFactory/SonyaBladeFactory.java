@@ -18,7 +18,7 @@ public class SonyaBladeFactory extends CharacterFactory{
     }
     /**
      *
-     * @return
+     * @return объект типа GameCharacter, соответствующий персонажу SonyaBlade
      */
         public GameCharacter createCharacter(){
         return new SonyaBlade();

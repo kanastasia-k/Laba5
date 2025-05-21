@@ -67,7 +67,7 @@ public class GameManager {
 
     /**
      *
-     * @return
+     * @return враги
      */
     public GameCharacter[] getEnemies() {
         return this.enemies;

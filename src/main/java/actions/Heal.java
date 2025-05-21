@@ -10,7 +10,7 @@ import characters.GameCharacter;
  * Класс, реализующий действие Восстановление здоровья
  */
 public class Heal extends Action {
-    
+
 /**
  * Возвращает тип действия
  * 

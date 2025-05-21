@@ -14,7 +14,7 @@ public class DefenseFactory extends ActionFactory{
 
     /**
      *
-     * @return
+     * @return объект типа Action, соответствующий действию Defense
      */
     @Override
     public Action createAction() {

@@ -18,7 +18,7 @@ public class SubZeroFactory extends CharacterFactory{
     }
     /**
      *
-     * @return
+     * @return объект типа GameCharacter, соответствующий персонажу SubZero
      */
         public GameCharacter createCharacter(){
         return new SubZero();

@@ -42,7 +42,7 @@ public class Location {
 
     /**
      * Возвращает список врагов, сгенерированных для текущей локации
-     * @return 
+     * @return  список врагов
      */
     public ArrayList<GameCharacter> getCurrentEnemies() {
         return currentEnemiesList;
@@ -107,7 +107,7 @@ public class Location {
 
     /**
      *
-     * @return
+     * @return конкретная локация
      */
     public int getCurrentLocation() {
         return currentLocation;
@@ -115,7 +115,7 @@ public class Location {
 
     /**
      *
-     * @return
+     * @return номер врага
      */
     public int getCurrentEnemyNumber() {
         return currentEnemyNumber;

@@ -32,7 +32,7 @@ public class Items {
     
     /**
      *
-     * @return
+     * @return имя
      */
     public String getName(){
         return this.name;
@@ -40,7 +40,7 @@ public class Items {
 
     /**
      *
-     * @return
+     * @return количество
      */
     public int getCount(){
         return this.count;

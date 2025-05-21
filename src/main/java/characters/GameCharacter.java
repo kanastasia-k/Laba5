@@ -50,7 +50,7 @@ public abstract class GameCharacter {
     
     /**
      *
-     * @return
+     * @return bonusDamageTurns
      */
     public boolean hasBonusDamage() {
         return bonusDamageTurns > 0;
@@ -67,7 +67,7 @@ public abstract class GameCharacter {
 
     /**
      *
-     * @return 
+     * @return bonusDamageTurns
      */
     public int getBonusDamageTurns() {
         return bonusDamageTurns;
@@ -95,7 +95,7 @@ public abstract class GameCharacter {
 
     /**
      *
-     * @return
+     * @return объект иконки
      */
     public ImageIcon getPhoto() {
         return icon;
@@ -166,7 +166,7 @@ public abstract class GameCharacter {
 
     /**
      *
-     * @return
+     * @return уровень
      */
     public int getLevel() {
         return this.level;
@@ -174,7 +174,7 @@ public abstract class GameCharacter {
 
     /**
      *
-     * @return
+     * @return здоровье
      */
     public int getHealth() {
         return this.health;
@@ -182,7 +182,7 @@ public abstract class GameCharacter {
 
     /**
      *
-     * @return
+     * @return урон
      */
     public int getDamage() {
         return this.damage;
@@ -190,7 +190,7 @@ public abstract class GameCharacter {
 
     /**
      *
-     * @return
+     * @return максимальное здоровье
      */
     public int getMaxHealth() {
         return this.maxHealth;
@@ -198,18 +198,10 @@ public abstract class GameCharacter {
 
     /**
      *
-     * @return
+     * @return имя
      */
     public String getName() {
         return name;
     }
-
-    /**
-     *
-     * @return
-     */
-//    public String getStringName(){
-//       return name;
-//    }
 }
 

@@ -18,7 +18,7 @@ public class HumanFactory extends CharacterFactory{
     }
     /**
      *
-     * @return
+     * @return объект типа GameCharacter, соответствующий персонажу Human
      */
         public GameCharacter createCharacter(){
         return new Human();
